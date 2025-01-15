@@ -10,14 +10,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     if (mysqli_num_rows($cek) === 1) {
         echo "<script>alert('NIK sudah digunakan!')</script>";
-
-    } else {
+        } else {
         $nama = $_POST['nama'];
         $telepon = $_POST['telepon'];
         $username = $_POST['username'];
-        $password = $_POST['password'];
+        $password = md5($_POST['password']);
         $sql = "INSERT INTO masyarakat SET nik=?, nama=?, telp=?, username=?, password=?";
-        $koneksi->execute_query($sql, [$nik, $telepon, $username, $password]);
+        $koneksi->execute_query($sql, [$nik, $nama, $telepon, $username, $password]);
         echo "<script>alert('Pendaftaran berhasil!')</script>";
         header("locatiom:login.php");
     }
