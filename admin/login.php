@@ -7,11 +7,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = md5($_POST['password']);
 
     $sql = "SELECT * FROM petugas WHERE username=? AND password=?";
-    $row = $koneksi->execute_query($sql, [$username, $password]);
+    $row = $koneksi->execute_query($sql, [$username, $password])->fetch_assoc();
     
-    if (mysqli_num_rows($row) == 1) {
+    if ($row) {
         session_start();
-        $_SESSION['password'] = "$password";
+        $_SESSION['id'] = $row['id_petugas'];
+        $_SESSION['level'] = $row['level'];
         header("location:index.php");
     } else {
         echo "<script>alert('Gagal Login!')</script>";
@@ -30,15 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 
-    <form action="" method="post" class="form-login">
+    <h1>Login</h1>
+    <form action="" class="form-login" method="post">
         <p>Silahkan Login</p>
         <div class="form-item">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" required>
+            <input type="text" name="username" id="username">
         </div>
         <div class="form-item">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" required>
+            <input type="password" name="password" id="password">
         </div>
         <button type="submit">Login</button>
     </form>

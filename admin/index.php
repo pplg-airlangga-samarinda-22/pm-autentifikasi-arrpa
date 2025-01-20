@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once "../controller/koneksi.php";
+require "../controller/koneksi.php";
 if (empty ($_SESSION['nik'])) {
     header("location:login.php");
 }
@@ -13,14 +13,17 @@ if (empty ($_SESSION['nik'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pelaporan Pengaduan</title>
+    <title>Admin Pengaduan</title>
 </head>
 <body>
 
-    <h1>Selamat Datang di Aplikasi Pengaduan Masyarakat</h1>
+    <h1>Selamat Datang di Sistem Pengaduan Masyarakat</h1>
     <nav>
         <a href="index.php">Dashboard</a>
         <a href="aduan.php">Aduan</a>
+        <a href="masyarakat.php">Masyarakat</a>
+        <a href="petugas.php">Petugas</a>
+        <a href="laporan.php">Laporan</a>
         <a href="logout.php">Logout</a>
     </nav>
     
