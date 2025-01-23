@@ -21,7 +21,7 @@ if (empty ($_SESSION['nik'])) {
     <nav>
         <a href="index.php">Dashboard</a>
         <a href="aduan.php">Aduan</a>
-        <a href="masyarakat.php">Masyarakat</a>
+        <a href="../masyarakat/masyarakat.php">Masyarakat</a>
         <a href="petugas.php">Petugas</a>
         <a href="laporan.php">Laporan</a>
         <a href="logout.php">Logout</a>
