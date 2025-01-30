@@ -15,7 +15,7 @@ require "../controller/koneksi.php";
 <body>
 
     <h1>Data Pengaduan</h1>
-    <a href="index.php">Kembali</a>
+    <a href="../admin/index.php">Kembali</a>
     <table>
         <thead>
             <th>No</th>
