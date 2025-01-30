@@ -34,7 +34,7 @@ require "../controller/koneksi.php";
             <tr>
                 <td><?= ++$no ?></td>
                 <td><?= $row['nama_petugas'] ?></td>
-                <td><?= $row['telp_petugas'] ?></td>
+                <td><?= $row['telp'] ?></td>
                 <td><?= $row['username'] ?></td>
                 <td><?= $row['level'] ?></td>
                 <td>
@@ -47,7 +47,7 @@ require "../controller/koneksi.php";
             ?>
         </tbody>
     </table>
-    <a href="index,php">Kembali</a>
+    <a href="../admin/index.php">Kembali</a>
     
 </body>
 </html>

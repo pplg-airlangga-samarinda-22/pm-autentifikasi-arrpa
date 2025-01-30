@@ -20,9 +20,11 @@ if (empty ($_SESSION['nik'])) {
     <h1>Selamat Datang di Sistem Pengaduan Masyarakat</h1>
     <nav>
         <a href="index.php">Dashboard</a>
-        <a href="aduan.php">Aduan</a>
+        <a href="../pengaduan/pengaduan.php">Aduan</a>
         <a href="../masyarakat/masyarakat.php">Masyarakat</a>
-        <a href="petugas.php">Petugas</a>
+        <?php if ($_SESSION['level'] === 'admin') { ?>
+        <a href="../petugas/petugas.php">petugas</a>
+        <?php } ?>
         <a href="laporan.php">Laporan</a>
         <a href="logout.php">Logout</a>
     </nav>

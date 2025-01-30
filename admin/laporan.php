@@ -41,20 +41,23 @@ require "../controller/koneksi.php";
                 // Get masyarakat details
                 $sql_masyarakat = "SELECT nama FROM masyarakat WHERE nik=?";
                 $masyarakat = $koneksi->execute_query($sql_masyarakat, [$nik])->fetch_assoc();
-                $nama_pelapor = $masyarakat['nama'];
+                $nama_pelapor = $masyarakat['nama'] ?? 'Tidak Ditemukan';
 
                 // Get tanggapan details
                 $sql_tanggapan = "SELECT tgl_tanggapan, tanggapan, id_petugas FROM tanggapan WHERE id_pengaduan=?";
                 $tanggapan_row = $koneksi->execute_query($sql_tanggapan, [$id_pengaduan])->fetch_assoc();
-                $tanggal_tanggapan = $tanggapan_row['tgl_tanggapan'];
-                $tanggapan = $tanggapan_row['tanggapan'];
-                $id_petugas = $tanggapan_row['id_petugas'];
+                $tanggal_tanggapan = $tanggapan_row['tgl_tanggapan'] ?? '-';
+                $tanggapan = $tanggapan_row['tanggapan'] ?? '-';
+                $id_petugas = $tanggapan_row['id_petugas'] ?? null;
 
                 // Get petugas details
-                $sql_petugas = "SELECT nama_petugas FROM petugas WHERE id_petugas=?";
-                $petugas = $koneksi->execute_query($sql_petugas, [$id_petugas])->fetch_assoc();
-                $nama_petugas = $petugas['nama_petugas'];
-
+                if ($id_petugas) {
+                    $sql_petugas = "SELECT nama_petugas FROM petugas WHERE id_petugas=?";
+                    $petugas = $koneksi->execute_query($sql_petugas, [$id_petugas])->fetch_assoc();
+                    $nama_petugas = $petugas['nama_petugas'] ?? '-';
+                } else {
+                    $nama_petugas = '-';
+                }
             ?>
                 <tr>
                     <td><?= ++$no ?></td>
